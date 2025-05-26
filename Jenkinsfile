@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub') // Debes crear estas credenciales en Jenkins
-        DOCKER_IMAGE = "alejadro2005/knote-java"
+        DOCKER_IMAGE = "alejandromons/knote-java"
     }
 
     stages {
