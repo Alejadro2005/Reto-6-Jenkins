@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3.8.4-openjdk-11'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
-    }
+    agent any
 
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub') // Debes crear estas credenciales en Jenkins
@@ -13,6 +8,11 @@ pipeline {
 
     stages {
         stage('Compilar') {
+            agent {
+                docker {
+                    image 'maven:3.8.4-openjdk-11'
+                }
+            }
             steps {
                 sh 'mvn clean package -DskipTests'
             }
